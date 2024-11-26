@@ -23,11 +23,11 @@ void RightModuleManager::setup() {
 
 void RightModuleManager::update() {
     int resistorValue = analogRead(RESISTOR_PIN);
-    Serial.printf("Resistor value: %d\n", resistorValue);
+    //Serial.printf("Resistor value: %d\n", resistorValue);
     
     // Check if current module is still connected
     if (currentModule && !currentModule->identify(resistorValue)) {
-        Serial.printf("Module %s disconnected\n", currentModule->getName());
+        //Serial.printf("Module %s disconnected\n", currentModule->getName());
         currentModule->cleanup();
         currentModule = nullptr;
     }
@@ -38,7 +38,7 @@ void RightModuleManager::update() {
             if (module->identify(resistorValue)) {
                 currentModule = module;
                 currentModule->setup();
-                Serial.printf("Module %s connected\n", currentModule->getName());
+                //Serial.printf("Module %s connected\n", currentModule->getName());
                 break;
             }
         }

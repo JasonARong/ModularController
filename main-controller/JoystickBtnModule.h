@@ -15,8 +15,12 @@ class JoystickBtnModule : public RightModuleBase {
         const int JOYSTICK_X_MAX = 3720;
         const int JOYSTICK_Y_MAX = 3720;
         // Virtual Buttons
-        const int R1_BUTTON = 8;
-        const int R3_BUTTON = 15;
+        const int faceButtons[4] = {1, 2, 4, 3}; // PC,Mac
+        const int R1_BUTTON = 6; // PC,Mac
+        const int R3_BUTTON = 12; // PC,Mac
+        //const int faceButtons[4] = {1, 2, 3, 4}; // Android
+        // const int R1_BUTTON = 8; // Android
+        // const int R3_BUTTON = 15; // Android
 
         const int RESISTOR_MIN = 600;
         const int RESISTOR_MAX = 700;

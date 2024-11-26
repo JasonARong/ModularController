@@ -24,9 +24,9 @@ void JoystickBtnModule::update(){
     // 4 face buttons
     for (int i = 0; i < NUM_BUTTONS; i++) {
         if(digitalRead(buttonPins[i]) == LOW){
-            bleGamepad->press(i+1);
+            bleGamepad->press(faceButtons[i]);
         } else{
-            bleGamepad->release(i+1);
+            bleGamepad->release(faceButtons[i]);
         }
     }
 
@@ -47,7 +47,11 @@ void JoystickBtnModule::update(){
     int xValue = map(constrain(analogRead(joystickXPin), 0, JOYSTICK_X_MAX), 0, JOYSTICK_X_MAX, 32767, 0);
     int yValue = map(constrain(analogRead(joystickYPin), 0, JOYSTICK_Y_MAX), 0, JOYSTICK_Y_MAX, 0, 32767);
 
-    bleGamepad->setRightThumb(xValue,yValue);
+    //bleGamepad->setRightThumb(xValue,yValue);
+    bleGamepad->setRX(xValue);
+    bleGamepad->setRY(yValue);
+    // Serial.printf("z value: %d\n", xValue);
+    // Serial.printf("RX value: %d\n", yValue);
 }
 
 void JoystickBtnModule::cleanup() {
